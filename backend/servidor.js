@@ -53,7 +53,7 @@ app.get('/obtenerProductos/:id',(peticion, respuesta)=>{
     // 6.1 consulta sql
     const sql="SELECT * FROM productos WHERE id_categoria_id = ?";
     // 6.2 lo envio a la conexion
-    conexion.query(sql,(error,resultado)=>{
+    conexion.query(sql, [id],(error,resultado)=>{
         // 6.3 compruebo el resultado
         if(error) return respuesta.json({Error:"Error en la consulta"});
         return respuesta.json({Estatus:"Exitoso",Resultado:resultado});
